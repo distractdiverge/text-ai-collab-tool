@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' ws://localhost:*; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:*; style-src 'self' 'unsafe-inline'; connect-src 'self' ws://localhost:* http://localhost:*;">
+    <title>Collaborative Text Editor</title>
+    <!-- Load Socket.IO first -->
+    <script src="node_modules/socket.io-client/dist/socket.io.min.js"></script>
+    <!-- Then load Monaco -->
+    <script src="node_modules/monaco-editor/min/vs/loader.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="editor-container">
+        <div id="editor"></div>
+    </div>
+    <div class="sidebar">
+        <h2>Users</h2>
+        <div id="users-list"></div>
+    </div>
+    <script src="renderer.js"></script>
+</body>
+</html>
