@@ -14,8 +14,8 @@
     "text",
     "monaco"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "alex.lapinski@gmail.com",
+  "license": "MIT",
   "description": "A collaborative text editor with AI integration",
   "dependencies": {
     "electron": "^28.0.0",
