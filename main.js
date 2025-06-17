@@ -3,6 +3,8 @@ const path = require('path');
 const { createServer } = require('http');
 const { Server } = require('socket.io');
 
+const { loadConfig, getConfig } = require('./services/EnvFileConfigService');
+
 // Initialize @electron/remote
 require('@electron/remote/main').initialize();
 
@@ -29,8 +31,9 @@ function createWindow() {
     // Load the index.html file
     mainWindow.loadFile('index.html');
 
+    const config = getConfig
     // Open DevTools in development mode
-    if (process.env.NODE_ENV === 'development') {
+    if (config.Environment === 'development') {
         console.log('Running in development mode');
         mainWindow.webContents.openDevTools();
     }
@@ -95,6 +98,7 @@ function createEditorServer() {
 
 // Handle Electron app events
 app.whenReady().then(() => {
+    loadConfig();
     createWindow();
     createEditorServer();
 

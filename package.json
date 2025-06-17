@@ -19,6 +19,7 @@
   "license": "MIT",
   "description": "A collaborative text editor with AI integration",
   "dependencies": {
+    "dotenv": "^16.5.0",
     "electron": "^28.0.0",
     "electron-store": "^8.1.0",
     "monaco-editor": "^0.47.0",
