@@ -1,0 +1,19 @@
+{
+  "name": "suggested_responses",
+  "description": "If you are calling no other tools and are asking a question to the user, use this tool to supply a small number of possible suggested answers to your question. Examples can be Yes/No, or other simple multiple choice options. Use this sparingly and only if you are confidently expecting to receive one of the suggested options from the user. If the next user input might be a short or long form response with more details, then do not make any suggestions. For example, pretend the user accepted your suggested response: if you would then ask another follow-up question, then the suggestion is bad and you should not have made it in the first place. Try not to use this many times in a row.",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "Suggestions": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "List of suggestions. Each should be at most a couple words, do not return more than 3 options."
+      }
+    },
+    "required": ["Suggestions"],
+    "additionalProperties": false
+  }
+}

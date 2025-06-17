@@ -1,0 +1,16 @@
+{
+  "name": "read_url_content",
+  "description": "Read content from a URL. URL must be an HTTP or HTTPS URL that points to a valid internet resource accessible via web browser.",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "Url": {
+        "type": "string",
+        "description": "URL to read content from"
+      }
+    },
+    "required": ["Url"],
+    "additionalProperties": false
+  }
+}

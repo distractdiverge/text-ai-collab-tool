@@ -1,0 +1,22 @@
+{
+  "name": "outline_generator",
+  "description": "Generates or updates a hierarchical outline from the current document, maintaining links to headings.",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "documentContent": {
+        "type": "string",
+        "description": "The content to generate an outline from"
+      },
+      "maxDepth": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 6,
+        "description": "Maximum heading level to include in the outline"
+      }
+    },
+    "required": ["documentContent", "maxDepth"],
+    "additionalProperties": false
+  }
+}

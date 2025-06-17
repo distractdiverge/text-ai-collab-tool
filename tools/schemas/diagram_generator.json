@@ -1,0 +1,26 @@
+{
+  "name": "diagram_generator",
+  "description": "Turns a block of pseudo-code / text description into an inline SVG or mermaid diagram (flow-chart, sequence, mind-map).",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "description": {
+        "type": "string",
+        "description": "Description of the diagram to generate"
+      },
+      "diagramType": {
+        "type": "string",
+        "enum": ["flowchart", "sequence", "class", "er", "gantt", "pie", "state", "journey", "git", "mindmap"],
+        "description": "Type of diagram to generate"
+      },
+      "format": {
+        "type": "string",
+        "enum": ["svg", "mermaid", "png"],
+        "description": "Output format for the diagram"
+      }
+    },
+    "required": ["description", "diagramType", "format"],
+    "additionalProperties": false
+  }
+}

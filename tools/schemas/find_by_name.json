@@ -1,0 +1,47 @@
+{
+  "name": "find_by_name",
+  "description": "Search for files and subdirectories within a specified directory using fd.\nSearch uses smart case and will ignore gitignored files by default.\nPattern and Excludes both use the glob format. If you are searching for Extensions, there is no need to specify both Pattern AND Extensions.\nTo avoid overwhelming output, the results are capped at 50 matches. Use the various arguments to filter the search scope as needed.\nResults will include the type, size, modification time, and relative path.",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "SearchDirectory": {
+        "type": "string",
+        "description": "The directory to search within"
+      },
+      "Pattern": {
+        "type": "string",
+        "description": "Optional, Pattern to search for, supports glob format"
+      },
+      "Excludes": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Optional, exclude files/directories that match the given glob patterns"
+      },
+      "Type": {
+        "type": "string",
+        "enum": ["file", "directory", "any"],
+        "description": "Optional, type filter"
+      },
+      "MaxDepth": {
+        "type": "integer",
+        "description": "Optional, maximum depth to search"
+      },
+      "Extensions": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Optional, file extensions to include (without leading .), matching paths must match at least one of the included extensions"
+      },
+      "FullPath": {
+        "type": "boolean",
+        "description": "Optional, whether the full absolute path must match the glob pattern, default: only filename needs to match. Take care when specifying glob patterns with this flag on, e.g when FullPath is on, pattern '*.py' will not match to the file '/foo/bar.py', but pattern '**/*.py' will match."
+      }
+    },
+    "required": ["SearchDirectory", "Pattern", "Excludes", "Type", "MaxDepth", "Extensions", "FullPath"],
+    "additionalProperties": false
+  }
+}

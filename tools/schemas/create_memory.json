@@ -1,0 +1,47 @@
+{
+  "name": "create_memory",
+  "description": "Save important context relevant to the USER and their task to a memory database.\nExamples of context to save:\n- USER preferences\n- Explicit USER requests to remember something or otherwise alter your behavior\n- Important code snippets\n- Technical stacks\n- Project structure\n- Major milestones or features\n- New design patterns and architectural decisions\n- Any other information that you think is important to remember.\nBefore creating a new memory, first check to see if a semantically related memory already exists in the database. If found, update it instead of creating a duplicate.\nUse this tool to delete incorrect memories when necessary.",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "Id": {
+        "type": "string",
+        "description": "Id of an existing MEMORY to update or delete. When creating a new MEMORY, leave this blank."
+      },
+      "Title": {
+        "type": "string",
+        "description": "Descriptive title for a new or updated MEMORY. This is required when creating or updating a memory. When deleting an existing MEMORY, leave this blank."
+      },
+      "Content": {
+        "type": "string",
+        "description": "Content of a new or updated MEMORY. When deleting an existing MEMORY, leave this blank."
+      },
+      "CorpusNames": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "CorpusNames of the workspaces associated with the MEMORY. Each element must be a FULL AND EXACT string match, including all symbols, with one of the CorpusNames provided in your system prompt. Only used when creating a new MEMORY."
+      },
+      "Tags": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Tags to associate with the MEMORY. These will be used to filter or retrieve the MEMORY. Only used when creating a new MEMORY. Use snake_case."
+      },
+      "Action": {
+        "type": "string",
+        "enum": ["create", "update", "delete"],
+        "description": "The type of action to take on the MEMORY. Must be one of 'create', 'update', or 'delete'"
+      },
+      "UserTriggered": {
+        "type": "boolean",
+        "description": "Set to true if the user explicitly asked you to create/modify this memory."
+      }
+    },
+    "required": ["Id", "Title", "Content", "CorpusNames", "Tags", "Action", "UserTriggered"],
+    "additionalProperties": false
+  }
+}

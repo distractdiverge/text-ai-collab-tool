@@ -1,0 +1,20 @@
+{
+  "name": "template_applier",
+  "description": "Applies publication templates (journal article, grant proposal, lab report) with pre-filled sections and placeholder guidance.",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "templateName": {
+        "type": "string",
+        "description": "Name of the template to apply"
+      },
+      "targetContent": {
+        "type": "string",
+        "description": "The content to apply the template to"
+      }
+    },
+    "required": ["templateName", "targetContent"],
+    "additionalProperties": false
+  }
+}

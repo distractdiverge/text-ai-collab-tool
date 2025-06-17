@@ -1,0 +1,20 @@
+{
+  "name": "fact_check",
+  "description": "Evaluates factual claims inside a selection; returns confidence score + supporting/refuting sources.",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "text": {
+        "type": "string",
+        "description": "The text containing claims to fact check"
+      },
+      "requiredConfidence": {
+        "type": "number",
+        "description": "The minimum confidence score required to return a claim as factually correct"
+      }
+    },
+    "required": ["text", "requiredConfidence"],
+    "additionalProperties": false
+  }
+}

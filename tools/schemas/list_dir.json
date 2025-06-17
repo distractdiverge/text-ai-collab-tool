@@ -1,0 +1,16 @@
+{
+  "name": "list_dir",
+  "description": "List the contents of a directory. Directory path must be an absolute path to a directory that exists. For each child in the directory, output will have: relative path to the directory, whether it is a directory or file, size in bytes if file, and number of children (recursive) if directory.",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "DirectoryPath": {
+        "type": "string",
+        "description": "Path to list contents of, should be absolute path to a directory"
+      }
+    },
+    "required": ["DirectoryPath"],
+    "additionalProperties": false
+  }
+}

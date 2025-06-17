@@ -1,0 +1,22 @@
+{
+  "name": "plagiarism_detector",
+  "description": "Checks selected text against public web and internal corpus; returns similarity score and matched snippets.",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "text": {
+        "type": "string",
+        "description": "The text to check for plagiarism"
+      },
+      "minSimilarity": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "description": "Minimum similarity threshold (0-1) to report"
+      }
+    },
+    "required": ["text", "minSimilarity"],
+    "additionalProperties": false
+  }
+}

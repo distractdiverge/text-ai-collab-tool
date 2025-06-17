@@ -1,0 +1,19 @@
+{
+  "name": "search_web",
+  "description": "Performs a web search to get a list of relevant web documents for the given query and optional domain filter.",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string"
+      },
+      "domain": {
+        "type": "string",
+        "description": "Optional domain to recommend the search prioritize"
+      }
+    },
+    "required": ["query", "domain"],
+    "additionalProperties": false
+  }
+}

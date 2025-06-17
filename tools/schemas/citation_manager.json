@@ -1,0 +1,21 @@
+{
+  "name": "citation_manager",
+  "description": "Given a URL/DOI/ISBN, fetches metadata and returns properly formatted in-text citation & bibliography entry in chosen style.",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "referenceId": {
+        "type": "string",
+        "description": "The URL, DOI, or ISBN of the reference to fetch"
+      },
+      "citationStyle": {
+        "type": "string",
+        "enum": ["APA", "MLA", "Chicago", "IEEE", "Harvard"],
+        "description": "Citation style to format the reference in"
+      }
+    },
+    "required": ["referenceId", "citationStyle"],
+    "additionalProperties": false
+  }
+}

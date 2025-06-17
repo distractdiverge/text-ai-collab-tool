@@ -1,0 +1,35 @@
+{
+  "name": "edit_file",
+  "description": "Do NOT make parallel edits to the same file.\nUse this tool to edit an existing file. Follow these rules:\n1. Specify ONLY the precise lines of code that you wish to edit.\n2. **NEVER specify or write out unchanged code**. Instead, represent all unchanged code using this special placeholder: {{ ... }}.\n3. To edit multiple, non-adjacent lines of code in the same file, make a single call to this tool. Specify each edit in sequence with the special placeholder {{ ... }} to represent unchanged code in between edited lines.\nHere's an example of how to edit three non-adjacent lines of code at once:\nCodeContent:\n{{ ... }}\nedited_line_1\n{{ ... }}\nedited_line_2\n{{ ... }}\nedited_line_3\n{{ ... }}\n\n5. You may not edit file extensions: [.ipynb]\nYou should specify the following arguments before the others: [TargetFile]",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "CodeMarkdownLanguage": {
+        "type": "string",
+        "description": "Markdown language for the code block, e.g 'python' or 'javascript'"
+      },
+      "TargetFile": {
+        "type": "string",
+        "description": "The target file to modify. Always specify the target file as the very first argument."
+      },
+      "Instruction": {
+        "type": "string",
+        "description": "A description of the changes that you are making to the file."
+      },
+      "TargetLintErrorIds": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "If applicable, IDs of lint errors this edit aims to fix (they'll have been given in recent IDE feedback). If you believe the edit could fix lints, do specify lint IDs; if the edit is wholly unrelated, do not. A rule of thumb is, if your edit was influenced by lint feedback, include lint IDs. Exercise honest judgement here."
+      },
+      "CodeEdit": {
+        "type": "string",
+        "description": "Specify ONLY the precise lines of code that you wish to edit. **NEVER specify or write out unchanged code**. Instead, represent all unchanged code using this special placeholder: {{ ... }}"
+      }
+    },
+    "required": ["CodeMarkdownLanguage", "TargetFile", "Instruction", "TargetLintErrorIds", "CodeEdit"],
+    "additionalProperties": false
+  }
+}

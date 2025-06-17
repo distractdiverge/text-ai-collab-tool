@@ -1,0 +1,29 @@
+{
+  "name": "version_comparer",
+  "description": "Presents a side-by-side diff between two document revisions with accept/reject controls.",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "oldVersion": {
+        "type": "string",
+        "description": "The older version of the document"
+      },
+      "newVersion": {
+        "type": "string",
+        "description": "The newer version of the document"
+      },
+      "contextLines": {
+        "type": "integer",
+        "minimum": 0,
+        "description": "Number of context lines to show around changes"
+      },
+      "ignoreWhitespace": {
+        "type": "boolean",
+        "description": "Whether to ignore whitespace changes"
+      }
+    },
+    "required": ["oldVersion", "newVersion", "contextLines", "ignoreWhitespace"],
+    "additionalProperties": false
+  }
+}

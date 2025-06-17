@@ -1,0 +1,19 @@
+{
+  "name": "grammar_style_check",
+  "description": "Runs grammar, clarity and reading-level analysis; returns list of issues w/ suggested fixes and style guide reference (APA, Chicago, etc.).",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "properties": {
+      "TargetFile": {
+        "type": "string",
+        "description": "The target file to analyze."
+      },
+      "CodeContent": {
+        "type": "string",
+        "description": "The text content to analyze."
+      }
+    },
+    "required": ["CodeContent"],
+    "type": "object"
+  }
+}

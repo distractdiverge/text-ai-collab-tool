@@ -1,0 +1,35 @@
+{
+  "name": "grep_search",
+  "description": "Use ripgrep to find exact pattern matches within files or directories.\nResults are returned in JSON format and for each match you will receive the:\n- Filename\n- LineNumber\n- LineContent: the content of the matching line\nTotal results are capped at 50 matches. Use the Includes option to filter by file type or specific paths to refine your search.",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "SearchPath": {
+        "type": "string",
+        "description": "The path to search. This can be a directory or a file. This is a required parameter."
+      },
+      "Query": {
+        "type": "string",
+        "description": "The search term or pattern to look for within files."
+      },
+      "MatchPerLine": {
+        "type": "boolean",
+        "description": "If true, returns each line that matches the query, including line numbers and snippets of matching lines (equivalent to 'git grep -nI'). If false, only returns the names of files containing the query (equivalent to 'git grep -l')."
+      },
+      "Includes": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "The files or directories to search within. Supports file patterns (e.g., '*.txt' for all .txt files) or specific paths (e.g., 'path/to/file.txt' or 'path/to/dir'). Leave this empty if you're grepping within an individual file."
+      },
+      "CaseInsensitive": {
+        "type": "boolean",
+        "description": "If true, performs a case-insensitive search."
+      }
+    },
+    "required": ["SearchPath", "Query", "MatchPerLine", "Includes", "CaseInsensitive"],
+    "additionalProperties": false
+  }
+}

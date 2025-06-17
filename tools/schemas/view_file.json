@@ -1,0 +1,28 @@
+{
+  "name": "view_file",
+  "description": "View the contents of a file. The lines of the file are 0-indexed, and the output of this tool call will be the file contents from StartLine to EndLine (inclusive), together with a summary of the lines outside of StartLine and EndLine. Note that this call can view at most 200 lines at a time.\n\nWhen using this tool to gather information, it's your responsibility to ensure you have the COMPLETE context. Specifically, each time you call this command you should:\n1) Assess if the file contents you viewed are sufficient to proceed with your task.\n2) If the file contents you have viewed are insufficient, and you suspect they may be in lines not shown, proactively call the tool again to view those lines.\n3) When in doubt, call this tool again to gather more information. Remember that partial file views may miss critical dependencies, imports, or functionality.",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "AbsolutePath": {
+        "type": "string",
+        "description": "Path to file to view. Must be an absolute path."
+      },
+      "StartLine": {
+        "type": "integer",
+        "description": "Startline to view"
+      },
+      "EndLine": {
+        "type": "integer",
+        "description": "Endline to view, inclusive. This cannot be more than 200 lines away from StartLine"
+      },
+      "IncludeSummaryOfOtherLines": {
+        "type": "boolean",
+        "description": "If true, you will also get a condensed summary of the full file contents in addition to the exact lines of code from StartLine to EndLine."
+      }
+    },
+    "required": ["AbsolutePath", "StartLine", "EndLine", "IncludeSummaryOfOtherLines"],
+    "additionalProperties": false
+  }
+}

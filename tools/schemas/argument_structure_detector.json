@@ -1,0 +1,21 @@
+{
+  "name": "argument_structure_detector",
+  "description": "Tags sentences/paragraphs as Claim, Evidence, Reasoning, Counter-argument, etc. Useful for persuasive-vs-informative diagnosis.",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "text": {
+        "type": "string",
+        "description": "The text to analyze for argument structure"
+      },
+      "granularity": {
+        "type": "string",
+        "enum": ["sentence", "paragraph", "section"],
+        "description": "The level of granularity for analysis"
+      }
+    },
+    "required": ["text", "granularity"],
+    "additionalProperties": false
+  }
+}
