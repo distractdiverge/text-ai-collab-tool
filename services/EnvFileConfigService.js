@@ -1,10 +1,10 @@
 const dotenv = require('dotenv');
 
-export function loadConfig() {
+function loadConfig() {
   dotenv.config();
 }
 
-export function getConfig() {
+function getConfig() {
   return {
     Environment: process.env.NODE_ENV || 'production',
     OpenAI: {
@@ -12,4 +12,9 @@ export function getConfig() {
       Model: process.env.GPT_AI_MODEL || 'gpt-4.1-mini'
     }
   }
+}
+
+module.exports = {
+  loadConfig,
+  getConfig
 }
