@@ -127,5 +127,3 @@ console.log('Renderer process started');
 // We'll add Monaco Editor and Socket.IO initialization here
 // For now, just log that the renderer is ready
 console.log('Renderer script loaded');
-
-// This will be replaced with Monaco Editor initialization in the next step
