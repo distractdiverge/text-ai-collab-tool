@@ -229,7 +229,10 @@ sequenceDiagram
     deactivate RendererProcess
 
     activate AgentOrchestrator
-    loop Reasoning & Tool-Use Loop
+    
+    rect rgba(0, 0, 0, 0.1)
+        note over AgentOrchestrator: Reasoning & Tool-Use Loop
+        
         AgentOrchestrator->>ExternalAPI: Sends prompt (with task + tool results)
         
         activate ExternalAPI
@@ -237,21 +240,19 @@ sequenceDiagram
         deactivate ExternalAPI
 
         alt LLM requests a tool
-            AgentOrchestrator->>LocalTools: Parses request and executes the specified tool
+            AgentOrchestrator->>LocalTools: Executes the specified tool
             
             activate LocalTools
-            LocalTools-->>AgentOrchestrator: Returns result of the tool execution
+            LocalTools-->>AgentOrchestrator: Returns tool execution result
             deactivate LocalTools
         else LLM provides final answer
             AgentOrchestrator-->>RendererProcess: Sends final answer via Socket.IO
-            break
+            deactivate AgentOrchestrator
+            activate RendererProcess
+            RendererProcess->>RendererProcess: Updates UI with final answer
+            deactivate RendererProcess
         end
     end
-    deactivate AgentOrchestrator
-
-    activate RendererProcess
-    RendererProcess->>RendererProcess: Updates UI with final answer
-    deactivate RendererProcess
 ```
 
 **Explanation of the "LLM Task with Tool Execution" Sequence:**
