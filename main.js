@@ -42,7 +42,7 @@ function createWindow() {
 }
 
 // Create HTTP and Socket.IO server
-function createServer() {
+function createEditorServer() {
     httpServer = createServer();
     
     io = new Server(httpServer, {
@@ -96,7 +96,7 @@ function createServer() {
 // Handle Electron app events
 app.whenReady().then(() => {
     createWindow();
-    createServer();
+    createEditorServer();
 
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {

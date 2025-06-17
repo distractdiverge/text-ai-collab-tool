@@ -3,6 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval';">
+     <!-- Load Monaco Editor -->
+    <script src="node_modules/monaco-editor/min/vs/loader.js"></script>
+    <script>
+        // Configure require to point to Monaco's loader
+        require.config({ 
+            paths: { 
+                'vs': './node_modules/monaco-editor/min/vs',
+                'socketio': 'https://cdn.socket.io/4.5.0/socket.io.min'
+            }
+        });
+    </script>
     <title>Collaborative Text Editor</title>
     <style>
         body {
